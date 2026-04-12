@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './App.css'
+import { supabase } from './supabaseClient'
 
 function App() {
   // State to manage form data - this is your "Data Processing" starting point
@@ -13,11 +14,23 @@ function App() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // This is where your future backend 'fetch' call will go
-    console.log("Operational Data Captured:", formData);
-    alert("Inquiry received! This will soon be processed by the backend automation.");
+    
+    const { name, email, message } = formData;
+
+    const { data, error } = await supabase
+      .from('inquiries')
+      .insert([{ name, email, message }]);
+
+    if (error) {
+      console.error("Error saving data:", error.message);
+      alert("System error. Workflow failed.");
+    } else {
+      console.log("Data structured and saved:", data);
+      alert("Success! Your inquiry has been processed into the LLC dashboard.");
+      setFormData({ name: '', email: '', message: '' });
+    }
   };
 
   return (
