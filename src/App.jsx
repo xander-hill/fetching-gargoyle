@@ -24,7 +24,7 @@ function App() {
     <div className="container">
       {/* 1. HERO SECTION: Professional Branding */}
       <header className="hero-section">
-        <h1>[LLC Name] Systems & Development</h1>
+        <h1>Fetching Gargoyle Systems & Development</h1>
         <p>Providing high-performance software contract solutions.</p>
         <div className="badge">Available for Q3 2026 Contracts</div>
       </header>
@@ -79,7 +79,7 @@ function App() {
       </section>
 
       <footer>
-        <p>© 2026 [LLC Name]. All rights reserved.</p>
+        <p>© 2026 Fetching Gargoyle. All rights reserved.</p>
       </footer>
     </div>
   )
