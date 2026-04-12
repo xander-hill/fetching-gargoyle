@@ -1,120 +1,87 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  // State to manage form data - this is your "Data Processing" starting point
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // This is where your future backend 'fetch' call will go
+    console.log("Operational Data Captured:", formData);
+    alert("Inquiry received! This will soon be processed by the backend automation.");
+  };
 
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+    <div className="container">
+      {/* 1. HERO SECTION: Professional Branding */}
+      <header className="hero-section">
+        <h1>[LLC Name] Systems & Development</h1>
+        <p>Providing high-performance software contract solutions.</p>
+        <div className="badge">Available for Q3 2026 Contracts</div>
+      </header>
 
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
+      {/* 2. SERVICES: Responsive Grid */}
+      <section className="services-grid">
+        <div className="card">
+          <h3>Custom Development</h3>
+          <p>Full-stack applications tailored to specific business logic.</p>
         </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
+        <div className="card">
+          <h3>Data Automation</h3>
+          <p>Streamlining workflows and reducing manual intervention.</p>
+        </div>
+        <div className="card">
+          <h3>System Architecture</h3>
+          <p>Designing scalable, reliable infrastructure for modern web apps.</p>
         </div>
       </section>
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
+      {/* 3. THE INQUIRY FORM: Your Backend Entry Point */}
+      <section className="form-container">
+        <h2>Project Inquiry</h2>
+        <p>Fill out the form below to initiate a structured data workflow.</p>
+        
+        <form onSubmit={handleSubmit} className="contact-form">
+          <input 
+            type="text" 
+            name="name" 
+            placeholder="Client Name" 
+            value={formData.name}
+            onChange={handleChange}
+            required 
+          />
+          <input 
+            type="email" 
+            name="email" 
+            placeholder="Email Address" 
+            value={formData.email}
+            onChange={handleChange}
+            required 
+          />
+          <textarea 
+            name="message" 
+            placeholder="Briefly describe the project scope..."
+            value={formData.message}
+            onChange={handleChange}
+            required
+          ></textarea>
+          <button type="submit" className="submit-btn">Submit Project Request</button>
+        </form>
+      </section>
+
+      <footer>
+        <p>© 2026 [LLC Name]. All rights reserved.</p>
+      </footer>
+    </div>
   )
 }
 
