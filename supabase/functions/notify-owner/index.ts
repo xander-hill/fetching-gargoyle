@@ -14,6 +14,7 @@ serve(async (req) => {
     body: JSON.stringify({
       from: 'Fetching Gargoyle <inquiry@fetchinggargoyle.com>',
       to: ['xander.k.hill@gmail.com'],
+      reply_to: record.email,
       subject: `New Contract Inquiry from ${record.name}`,
       html: `
         <h2>New Project Inquiry</h2>
