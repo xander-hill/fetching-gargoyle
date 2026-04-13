@@ -20,7 +20,6 @@ body {
   padding: 2rem;
 }
 
-/* Hero Styling */
 .hero-section {
   text-align: center;
   padding: 4rem 1rem;
@@ -45,7 +44,6 @@ body {
   border: 1px solid var(--primary);
 }
 
-/* Responsive Grid */
 .services-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -66,7 +64,6 @@ body {
   border-color: var(--primary);
 }
 
-/* The Form */
 .form-container {
   background: var(--card-bg);
   padding: 3rem;
